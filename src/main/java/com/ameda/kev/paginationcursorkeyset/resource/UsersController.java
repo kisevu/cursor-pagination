@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * Author: kev.Ameda
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/rate-limited")
 @RequiredArgsConstructor
 public class UsersController {
     private final UserService userService;
