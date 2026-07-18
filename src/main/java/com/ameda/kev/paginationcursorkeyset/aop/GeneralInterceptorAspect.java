@@ -54,7 +54,10 @@ public class GeneralInterceptorAspect {
 //    }
 
 
-    @Around(value = "execution(* com.ameda.kev.paginationcursorkeyset.resource.*.*(..))")
+//    @Around(value = "execution(* com.ameda.kev.paginationcursorkeyset.resource.*.*(..))")
+//    @Around(value = "within(com.ameda.kev.paginationcursorkeyset.service.*)")
+//    @Around(value = "this(com.ameda.kev.paginationcursorkeyset.service.UserService)")
+    @Around(value = "@annotation(com.ameda.kev.paginationcursorkeyset.annotations.CustomAnnotation)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable{
         log.info("Before method invoked: {}",joinPoint.getArgs()[0]);
         Object object = joinPoint.proceed();
