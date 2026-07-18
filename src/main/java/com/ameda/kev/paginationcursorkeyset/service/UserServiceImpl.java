@@ -52,4 +52,10 @@ public class UserServiceImpl implements UserService{
         String nextCursor = hasNextPage ? users.get(users.size() - 1).getId() : null;
         return new CursorPageResponse<>(users,size,nextCursor,hasNextPage);
     }
+
+    @Override
+    public User fetchUserById(String id) {
+        return userRepository.findById(id)
+                .orElseThrow();
+    }
 }

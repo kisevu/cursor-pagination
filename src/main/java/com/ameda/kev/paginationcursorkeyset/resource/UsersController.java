@@ -1,5 +1,7 @@
 package com.ameda.kev.paginationcursorkeyset.resource;
 
+import com.ameda.kev.paginationcursorkeyset.dto.CursorPageResponse;
+import com.ameda.kev.paginationcursorkeyset.entities.User;
 import com.ameda.kev.paginationcursorkeyset.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,14 @@ public class UsersController {
     }
 
     @GetMapping("/get-users")
-    public ResponseEntity<?> getUsers(@RequestParam(required = false) String cursor,
-                                      @RequestParam(defaultValue = "2") int size){
+    public ResponseEntity<CursorPageResponse<User>> getUsers(@RequestParam(required = false) String cursor,
+                                                             @RequestParam(defaultValue = "2") int size){
         return ResponseEntity.ok().body(userService.fetchNextPage(cursor,size));
+    }
+
+    @GetMapping("/get-user")
+    public ResponseEntity<User> getUser(@RequestParam(required = true) String id){
+        return ResponseEntity.ok()
+                .body(userService.fetchUserById(id));
     }
 }
