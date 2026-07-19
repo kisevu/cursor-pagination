@@ -1,5 +1,6 @@
 package com.ameda.kev.paginationcursorkeyset.service;
 
+import com.ameda.kev.paginationcursorkeyset.annotations.CustomAnnotation;
 import com.ameda.kev.paginationcursorkeyset.converters.UserConverters;
 import com.ameda.kev.paginationcursorkeyset.dto.CursorPageResponse;
 import com.ameda.kev.paginationcursorkeyset.dto.UsersDto;
@@ -51,5 +52,12 @@ public class UserServiceImpl implements UserService{
         //determine the next cursor
         String nextCursor = hasNextPage ? users.get(users.size() - 1).getId() : null;
         return new CursorPageResponse<>(users,size,nextCursor,hasNextPage);
+    }
+
+    @CustomAnnotation
+    @Override
+    public User fetchUserById(String id) {
+        return userRepository.findById(id)
+                .orElseThrow();
     }
 }
