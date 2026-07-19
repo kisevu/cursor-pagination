@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService{
                     .toList();
         }
         return convertedUsers.stream()
-                .map(user -> userRepository.save(user))
+                .map(userRepository::save)
                 .toList();
     }
 
