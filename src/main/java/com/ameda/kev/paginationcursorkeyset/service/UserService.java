@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserService {
     List<User> addUsers();
     CursorPageResponse<User> fetchNextPage(String cursor, int size);
+    User fetchUserById(String id);
 }
