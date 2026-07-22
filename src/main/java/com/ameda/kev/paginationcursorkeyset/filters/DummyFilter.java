@@ -17,5 +17,6 @@ public class DummyFilter implements Filter {
             ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         log.info("DummyFilter has executed.");
+        chain.doFilter(request, response);
     }
 }
